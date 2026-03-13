@@ -1,0 +1,28 @@
+{
+  "name": "Account Service Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/java:21-maven",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8080, 9092, 2181],
+  "portsAttributes": {
+    "8080": {
+      "label": "Quarkus App",
+      "onAutoForward": "notify"
+    },
+    "9092": {
+      "label": "Kafka Broker",
+      "onAutoForward": "notify"
+    },
+    "2181": {
+      "label": "Zookeeper",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "docker-compose up -d && sleep 10 && echo 'Kafka is ready!'",
+  "remoteEnv": {
+    "KAFKA_BOOTSTRAP_SERVERS": "kafka:29092"
+  }
+}
+
+

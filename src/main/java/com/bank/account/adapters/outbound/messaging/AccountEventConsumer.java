@@ -19,6 +19,7 @@ public class AccountEventConsumer {
     @Inject
     ObjectMapper objectMapper;
 
+
     /**
      * Process incoming account events from Kafka.
      * This method is triggered whenever a message arrives on the 'account-events-in' topic.

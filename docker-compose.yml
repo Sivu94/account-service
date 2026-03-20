@@ -27,3 +27,16 @@ services:
       timeout: 10s
       retries: 5
 
+  postgres:
+   image: postgres:16
+   container_name: account-postgres
+   environment:
+     POSTGRES_DB: accountdb
+     POSTGRES_USER: username
+     POSTGRES_PASSWORD: password
+   ports:
+    - "5432:5432"
+   volumes:
+   - postgres_data:/var/lib/postgresql/data
+volumes:
+      postgres_data:
